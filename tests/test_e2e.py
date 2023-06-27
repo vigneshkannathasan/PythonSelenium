@@ -46,6 +46,7 @@ class TestOne(BaseClass):
 class TestThree(BaseClass):
 
     def test_e2e_3(self):
+        log = self.logger()
         home_page = HomePage(self.driver)
         home_page.search_bar_option().send_keys('carrot')
         home_page.select_item().click()
@@ -61,5 +62,5 @@ class TestThree(BaseClass):
             sum = sum + int(price.text)
 
         total_price = checkout_page.total_amount_item().text
-
+        log.info('validation on progress')
         assert sum == int(total_price)
